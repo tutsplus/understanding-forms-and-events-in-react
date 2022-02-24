@@ -1,23 +1,16 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import UserProfile from './UserProfile.js';
+import {useState} from 'react';
 
 function App() {
+  let [data, setData] = useState({});
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserProfile callback={setData} />
+      <p>Name: {"name" in data ? data["name"] : "No name To Display" }</p>
+      <p>Email: {"email" in data ? data["email"] : "No email To Display" }</p>
     </div>
   );
 }
